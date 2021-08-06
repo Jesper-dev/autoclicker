@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import { addScore } from '../types/modules/square'
+import { useState } from 'react';
+import { Player } from '../types/classes/playerClass';
 
 const HomePage = () => {
   const [state, setState] = useState<{ startGame: boolean; score: number }>({
     startGame: false,
     score: 0,
-  })
-  // I can have the "addScore" functionality right here, but I wanna learn more about
-  // modules and import/export functions between components.
+  });
+  let player = new Player(state.score, 'Jesper');
   const sqaureClick = () => {
-    let newScore = addScore(state.score)
-    setState((prevState) => ({ ...prevState, score: newScore }))
-  }
+    player.addScore();
+    setState((prevState) => ({ ...prevState, score: player.score }));
+    console.log(player.score);
+  };
+
+  const startGame = () => {
+    player.name = 'Jesper King';
+    setState((prevState) => ({ ...prevState, startGame: true }));
+    console.log(player);
+  };
   return (
     <section className="pageContainer">
-      <h1 className="score">{state.score}</h1>
+      <h1 className="score" unselectable="on">
+        {state.score}
+      </h1>
       {state.startGame ? (
         <div className="square" onClick={() => sqaureClick()}></div>
       ) : (
-        <button
-          onClick={() =>
-            setState((prevState) => ({ ...prevState, startGame: true }))
-          }
-        >
-          Click Me
-        </button>
+        <button onClick={() => startGame()}>Click Me</button>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
