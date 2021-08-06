@@ -1,0 +1,34 @@
+//VARIABLES
+
+/*
+************************
+******  Colors  ******
+************************
+*/
+$bgOne: #2c4251;
+
+/*
+************************
+******  Headings  ******
+************************
+*/
+$headingSmall: 2rem;
+$headingMedium: 3rem;
+$headingBig: 4rem;
+
+/*
+************************
+******  Texts  ******
+************************
+*/
+$textSmall: 1.1rem;
+$textMedium: 1.3rem;
+$textBig: 1.5rem;
+$score: 3.5rem;
+
+// MIXINS
+@mixin flex-container-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

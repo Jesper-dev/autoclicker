@@ -1,12 +1,12 @@
-import React from "react";
-import "./assets/sass/App.scss";
+import HomePage from './pages/HomePage'
+import './assets/sass/Styles.scss'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hej</h1>
-    </div>
-  );
+    <main>
+      <HomePage />
+    </main>
+  )
 }
 
-export default App;
+export default App
