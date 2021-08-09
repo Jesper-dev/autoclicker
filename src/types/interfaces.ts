@@ -1,4 +1,4 @@
-export interface squareConf {
-  color: string
-  width: number
+export interface SqaureProps<T> {
+  values: T;
+  children: (values: T) => JSX.Element;
 }

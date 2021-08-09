@@ -8,7 +8,10 @@ export class Player {
   }
 
   addScore() {
-    // num += 1;
     this.score += 1;
+  }
+
+  addScoreRobot() {
+    this.score += 3;
   }
 }

@@ -7,10 +7,12 @@ const HomePage = () => {
     startGame: boolean;
     score: number;
     square: JSX.Element | null;
+    btnClass: string;
   }>({
     startGame: false,
     score: 0,
     square: null,
+    btnClass: '',
   });
   let player = new Player(state.score, 'Jesper');
   const sqaureClick = () => {
@@ -26,7 +28,9 @@ const HomePage = () => {
       square: CreateSquare(
         <div className="square" onClick={() => sqaureClick()}></div>
       ),
+      btnClass: 'afterStartBtn',
     }));
+
     console.log(player);
   };
   return (
@@ -34,7 +38,9 @@ const HomePage = () => {
       <h1 className="score" unselectable="on">
         {state.score}
       </h1>
-      <button onClick={() => startGame()}>Click Me</button>
+      <button onClick={() => startGame()} className={state.btnClass}>
+        Click Me
+      </button>
       {/* The sqaure that spans after we click 'start game' button */}
       {state.square}
     </section>
