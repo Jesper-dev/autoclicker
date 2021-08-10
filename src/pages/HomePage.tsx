@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { CreateSquare } from '../types/modules/square';
 import { Player } from '../types/classes/playerClass';
 
@@ -15,6 +15,10 @@ const HomePage = () => {
     btnClass: '',
   });
   let player = new Player(state.score, 'Jesper');
+  const buttonElement = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    buttonElement.current?.focus();
+  }, []);
   const sqaureClick = () => {
     player.addScore();
     setState((prevState) => ({ ...prevState, score: player.score }));
@@ -38,7 +42,11 @@ const HomePage = () => {
       <h1 className="score" unselectable="on">
         {state.score}
       </h1>
-      <button onClick={() => startGame()} className={state.btnClass}>
+      <button
+        ref={buttonElement}
+        onClick={() => startGame()}
+        className={state.btnClass}
+      >
         Click Me
       </button>
       {/* The sqaure that spans after we click 'start game' button */}
